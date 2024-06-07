@@ -1,9 +1,3 @@
--- local config = {
---     cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls") },
---    root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", "mvnw", ".git" }, { upward = true })[1]),
--- }
--- require("jdtls").start_or_attach(config)
-
 local home = os.getenv("HOME")
 local workspace_path = home .. "/.local/share/jdtls-workspace"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), "p:h:t")

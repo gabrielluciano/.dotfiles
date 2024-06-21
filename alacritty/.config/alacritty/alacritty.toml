@@ -1,5 +1,5 @@
 import = [
-    "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
+    "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
 ]
 
 [font]
@@ -11,7 +11,6 @@ bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
  
 size = 12.0
 
-[window]
-
-opacity = 0.98
+[env]
+TERM = "xterm-256color"
 

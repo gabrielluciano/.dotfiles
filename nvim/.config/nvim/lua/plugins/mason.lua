@@ -3,6 +3,9 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
+                "pyright",
+                "lemminx",
+                "lua_ls",
                 "gopls",
                 "docker_compose_language_service",
                 "tsserver",

@@ -3,6 +3,6 @@
 -- Add any additional keymaps here
 
 -- Dap
-require("which-key").register({
-    ["<leader>tR"] = { [[<ESC><CMD>lua require('dap').repl.open()<CR>]], "View Test Results" },
+require("which-key").add({
+    { "<leader>tR", "<ESC><CMD>lua require('dap').repl.open()<CR>", desc = "View Test Results", mode = "n" },
 })

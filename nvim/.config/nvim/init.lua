@@ -585,6 +585,44 @@ require('lazy').setup({
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- Java Test
+          local wk = require 'which-key'
+          wk.add {
+            {
+              mode = 'n',
+              buffer = event.buf,
+              { '<leader>t', group = 'test' },
+              {
+                '<leader>tt',
+                function()
+                  require('jdtls').test_class()
+                end,
+                desc = 'Run All Test',
+              },
+              {
+                '<leader>tn',
+                function()
+                  require('jdtls').test_nearest_method()
+                end,
+                desc = 'Run Nearest Test',
+              },
+              {
+                '<leader>tr',
+                function()
+                  require('dap').repl.open()
+                end,
+                desc = 'Show Test Results',
+              },
+              {
+                '<leader>tc',
+                function()
+                  require('dap').repl.close()
+                end,
+                desc = 'Close Test Results',
+              },
+            },
+          }
         end,
       })
 
@@ -647,6 +685,9 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'jdtls',
+        'java-debug-adapter',
+        'java-test',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -658,11 +699,19 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            if server_name == 'jdtls' then
+              return
+            end
             require('lspconfig')[server_name].setup(server)
           end,
         },
       }
     end,
+  },
+
+  { -- nvim-jdtls (Java)
+    -- See ftplugin/java.lua for configuration
+    'mfussenegger/nvim-jdtls',
   },
 
   { -- Autoformat
@@ -941,11 +990,11 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

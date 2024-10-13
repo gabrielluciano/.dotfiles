@@ -4,9 +4,6 @@ local jdtls_path = require('mason-registry').get_package('jdtls'):get_install_pa
 -- Lombok jar
 local lombok_jar = jdtls_path .. '/lombok.jar'
 
--- Mason packages location
-local mason_pkg_path = vim.fn.expand '$HOME/.local/share/nvim/mason/packages'
-
 -- Java Debug Adapter
 local java_debug_path = require('mason-registry').get_package('java-debug-adapter'):get_install_path()
 local bundles = {

@@ -14,6 +14,9 @@ local bundles = {
 local java_test_path = require('mason-registry').get_package('java-test'):get_install_path()
 vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. '/extension/server/*.jar', true), '\n'))
 
+-- Extend capabilities
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local config = {
   cmd = {
     jdtls_path .. '/bin/jdtls',
@@ -23,6 +26,7 @@ local config = {
   init_options = {
     bundles = bundles,
   },
+  capabilities = capabilities,
 }
 
 require('jdtls').start_or_attach(config)

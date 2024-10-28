@@ -1,6 +1,3 @@
-import = [
-    "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
-]
 
 [font]
 
@@ -13,4 +10,9 @@ size = 12.0
 
 [env]
 TERM = "xterm-256color"
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
+]
 

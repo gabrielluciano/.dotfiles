@@ -107,6 +107,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/opt/nvim-linux64/bin"
 alias vim='nvim'
 
+# Kubernetes
+alias k='microk8s kubectl'
+
 # ASDF
 . "$HOME/.asdf/asdf.sh"
 
